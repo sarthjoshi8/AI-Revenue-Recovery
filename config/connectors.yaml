@@ -1,0 +1,21 @@
+# Config for Connectors (Stubs & Production endpoints)
+connectors:
+  payment_processor:
+    provider: stub # options: stub, stripe, adyen, braintree
+    timeout_seconds: 10
+    max_retries: 3
+
+  email_sms:
+    email_provider: stub # options: stub, sendgrid, ses, postmark
+    sms_provider: stub # options: stub, twilio, sns
+    quiet_hours:
+      enabled: true
+      start_hour_utc: 21
+      end_hour_utc: 8
+
+  ivr_voice:
+    provider: stub # options: stub, twilio_voice, exotel, amazon_connect
+    default_language: hi-en
+
+  crm:
+    provider: stub # options: stub, salesforce, hubspot, zoho
