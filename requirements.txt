@@ -1,0 +1,20 @@
+# Core
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Data generation & utilities
+faker>=22.0.0
+rich>=13.7.0
+pyyaml>=6.0.1
+python-dateutil>=2.9.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Optional: LLM-assisted diagnosis (set DIAGNOSIS_ENGINE=llm in .env)
+# google-genai>=0.8.0
+# openai>=1.12.0
+
+# Type checking (dev)
+mypy>=1.8.0

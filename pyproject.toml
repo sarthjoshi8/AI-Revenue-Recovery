@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "ai-revenue-recovery"
+version = "0.1.0"
+description = "Agent system that detects, diagnoses, and recovers lost revenue across seven workflow types"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "faker>=22.0.0",
+    "rich>=13.7.0",
+    "pyyaml>=6.0.1",
+    "python-dateutil>=2.9.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "mypy>=1.8.0"]
+llm = ["google-genai>=0.8.0"]
+
+[project.scripts]
+recover = "runner.batch_runner:main"
+audit = "reporting.audit_viewer:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true
