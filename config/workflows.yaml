@@ -1,0 +1,67 @@
+# Config for Workflows
+workflows:
+  payment_degradation:
+    max_attempts: 3
+    cooldown_hours: 1.0
+    attribution_window_hours: 4.0
+    allowed_actions:
+      - retry_with_backoff
+      - route_alternate_processor
+      - trigger_card_updater
+      - fallback_payment_method
+
+  checkout_abandonment:
+    max_attempts: 3
+    cooldown_hours: 6.0
+    attribution_window_hours: 24.0
+    allowed_actions:
+      - send_email
+      - send_sms
+      - send_push
+
+  subscription_recovery:
+    max_attempts: 5
+    cooldown_hours: 48.0
+    attribution_window_hours: 168.0
+    allowed_actions:
+      - send_dunning_message
+      - trigger_card_updater
+      - retry_with_backoff
+      - send_grace_period_notice
+      - offer_payment_plan
+
+  b2b_receivables:
+    max_attempts: 4
+    cooldown_hours: 72.0
+    attribution_window_hours: 720.0
+    allowed_actions:
+      - send_friendly_reminder
+      - send_formal_notice
+      - escalate_to_ar
+      - escalate_to_collections
+
+  mandate_retry:
+    max_attempts: 3
+    cooldown_hours: 24.0
+    attribution_window_hours: 72.0
+    allowed_actions:
+      - retry_mandate_debit
+      - send_sms
+      - request_mandate_reauthorization
+
+  hinglish_voice:
+    max_attempts: 3
+    cooldown_hours: 48.0
+    attribution_window_hours: 72.0
+    allowed_actions:
+      - log_hinglish_script
+      - initiate_ivr_script
+
+  promise_to_pay:
+    max_attempts: 5
+    cooldown_hours: 24.0
+    attribution_window_hours: 720.0
+    allowed_actions:
+      - log_promise
+      - send_ptp_reminder
+      - escalate_broken_ptp
